@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.example.joaopaulo.quizapp.Adapters.ListaPerguntasAdapter;
 import com.example.joaopaulo.quizapp.Data.Perguntas;
-import com.example.joaopaulo.quizapp.InicialActivity;
 import com.example.joaopaulo.quizapp.PrincipalActivity;
 import com.example.joaopaulo.quizapp.R;
 

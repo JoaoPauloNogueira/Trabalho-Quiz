@@ -65,8 +65,6 @@ public class JQuizActivity extends AppCompatActivity implements PerguntasFragmen
 
     private void finalizaQuiz() {
 
-        //Toast.makeText(this, "Nome: " + usuario + "\r\nNivel: " + nivel + "\r\nAcertos: " + respostasCertas, Toast.LENGTH_LONG).show();
-
         Bundle b = new Bundle();
         b.putString("nomeDoUsuario", usuario);
         b.putString("nivelDoUsuario", nivel);
@@ -96,7 +94,6 @@ public class JQuizActivity extends AppCompatActivity implements PerguntasFragmen
 
             Toast.makeText(this, "Resposta errada :(", Toast.LENGTH_SHORT).show();
         }
-
         criaPergunta();
     }
 

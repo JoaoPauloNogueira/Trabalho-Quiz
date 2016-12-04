@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.joaopaulo.quizapp.Data.Perguntas;
-import com.example.joaopaulo.quizapp.InicialActivity;
+import com.example.joaopaulo.quizapp.PrincipalActivity;
 import com.example.joaopaulo.quizapp.R;
 
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ import java.util.List;
 
 public class ListaPerguntasAdapter extends RecyclerView.Adapter<ListaPerguntasAdapter.ItemViewHolder>{
 
-    InicialActivity inicialActivity;
+    PrincipalActivity inicialActivity;
     List<Perguntas> perguntas = new ArrayList<>();
 
-    public ListaPerguntasAdapter(InicialActivity inicialActivity, List<Perguntas> listaPerguntas){
+    public ListaPerguntasAdapter(PrincipalActivity inicialActivity, List<Perguntas> listaPerguntas) {
         this.inicialActivity = inicialActivity;
         perguntas = listaPerguntas;
     }
@@ -56,9 +56,9 @@ public class ListaPerguntasAdapter extends RecyclerView.Adapter<ListaPerguntasAd
         ImageView imageView;
         TextView textView;
         Perguntas pergunta;
-        private final InicialActivity inicialActivity;
+        private final PrincipalActivity inicialActivity;
 
-        public ItemViewHolder(final InicialActivity inicialActivity, View view) {
+        public ItemViewHolder(final PrincipalActivity inicialActivity, View view) {
 
             super(view);
 

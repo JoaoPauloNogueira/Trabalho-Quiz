@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.joaopaulo.quizapp.Data.Perguntas;
-import com.example.joaopaulo.quizapp.InicialActivity;
 import com.example.joaopaulo.quizapp.JQuizActivity;
+import com.example.joaopaulo.quizapp.PrincipalActivity;
 import com.example.joaopaulo.quizapp.R;
 
 public class PerguntasFragment extends Fragment {
@@ -70,14 +72,15 @@ public class PerguntasFragment extends Fragment {
 
         ImageView iv = (ImageView) view.findViewById(R.id.img_pergunta);
         TextView et = (TextView) view.findViewById(R.id.txt_pergunta);
+        RadioGroup rg = (RadioGroup) view.findViewById(R.id.rdg_pergunta);
         RadioButton rb1 = (RadioButton) view.findViewById(R.id.rbt_resposta1);
         RadioButton rb2 = (RadioButton) view.findViewById(R.id.rbt_resposta2);
         RadioButton rb3 = (RadioButton) view.findViewById(R.id.rbt_resposta3);
         RadioButton rb4 = (RadioButton) view.findViewById(R.id.rbt_resposta4);
 
-        if (mListener instanceof InicialActivity) {
+        if (mListener instanceof PrincipalActivity) {
 
-            ((InicialActivity) mListener).visualizaImagemPergunta(iv, pergunta.getImagem());
+            ((PrincipalActivity) mListener).visualizaImagemPergunta(iv, pergunta.getImagem());
         } else {
 
             ((JQuizActivity) mListener).visualizaImagemPergunta(iv, pergunta.getImagem());
@@ -118,24 +121,23 @@ public class PerguntasFragment extends Fragment {
             rb2.setEnabled(false);
             rb3.setEnabled(false);
             rb4.setEnabled(false);
+            rg.setEnabled(false);
 
         } else {
 
-            btnFechar.setVisibility(View.INVISIBLE);
+           rg.setEnabled(true);
 
-            View.OnClickListener viewOcl = new View.OnClickListener() {
+            rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
-                public void onClick(View v) {
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
-                    RadioButton rb = (RadioButton) v.findViewById(v.getId());
+                    RadioButton rb = (RadioButton) radioGroup.findViewById(i);
+
                     realizaEscolha(rb.getText().toString());
                 }
-            };
+            });
 
-            rb1.setOnClickListener(viewOcl);
-            rb2.setOnClickListener(viewOcl);
-            rb3.setOnClickListener(viewOcl);
-            rb4.setOnClickListener(viewOcl);
+            btnFechar.setVisibility(View.INVISIBLE);
         }
     }
 
