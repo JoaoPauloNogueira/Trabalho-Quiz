@@ -78,13 +78,7 @@ public class PerguntasFragment extends Fragment {
         RadioButton rb3 = (RadioButton) view.findViewById(R.id.rbt_resposta3);
         RadioButton rb4 = (RadioButton) view.findViewById(R.id.rbt_resposta4);
 
-        if (mListener instanceof PrincipalActivity) {
-
-            ((PrincipalActivity) mListener).visualizaImagemPergunta(iv, pergunta.getImagem());
-        } else {
-
-            ((JQuizActivity) mListener).visualizaImagemPergunta(iv, pergunta.getImagem());
-        }
+        iv.setImageDrawable(view.getResources().getDrawable(pergunta.getImagem()));
         et.setText(pergunta.getPergunta());
         String[] respostas = pergunta.getRespostas();
 

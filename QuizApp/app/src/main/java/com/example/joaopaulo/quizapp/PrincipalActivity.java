@@ -23,6 +23,7 @@ import com.example.joaopaulo.quizapp.Fragments.ConfiguracoesFragment;
 import com.example.joaopaulo.quizapp.Fragments.IniciarFragment;
 import com.example.joaopaulo.quizapp.Fragments.ListaPerguntasFragment;
 import com.example.joaopaulo.quizapp.Fragments.PerguntasFragment;
+import com.example.joaopaulo.quizapp.Fragments.ResultadoFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +33,11 @@ import java.util.Random;
 public class PrincipalActivity extends AppCompatActivity implements IniciarFragment.OnFragmentInteractionListener,
         ConfiguracoesFragment.OnFragmentInteractionListener,
         ListaPerguntasFragment.OnFragmentInteractionListener,
-        PerguntasFragment.OnFragmentInteractionListener{
+        PerguntasFragment.OnFragmentInteractionListener,
+        ResultadoFragment.OnFragmentInteractionListener {
+
+    private static int RESULTADO_QUIZ = 10;
+    private static int NOVA_PERGUNTA = 20;
 
     private String nomeUsuario;
     private String levelUsuario;
@@ -40,7 +45,6 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
     private QuizDBHelper quizDB;
     private FrameLayout fFragments;
     private FrameLayout fFragments2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +56,134 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
         inicializaBancoDeDados();
 
         inicializaViewPager();
+
+        inicializaFramesLayouts();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULTADO_QUIZ) {
+
+            Bundle b = data.getExtras();
+
+            ResultadoFragment fAtual = ResultadoFragment.newInstance(b.getString("nomeDoUsuario"),
+                    b.getString("nivelDoUsuario"), b.getInt("qtdRespostasCertas"));
+
+            atualizaVisibilidadeDoFrameLayout(fFragments, View.VISIBLE);
+
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frm_fragment, fAtual);
+            ft.commit();
+
+        } else if (requestCode == NOVA_PERGUNTA) {
+
+
+        }
+    }
+
+    /**
+     *  Métodos relacionados aos controles dos fragments
+     * */
+
+    //-- IniciarFragment
+    @Override
+    public void inicializaJQuiz(String usuario, String nivel) {
+
+        preferenciasCompartilhadas.atualizaPreferencia(getString(R.string.shared_preference_1), nomeUsuario);
+        preferenciasCompartilhadas.atualizaPreferencia(getString(R.string.shared_preference_2), levelUsuario);
+
+        List<Perguntas> p = selecionaPerguntas(nivel);
+        int quantidadePerguntas = p.size();
+
+        ListaPerguntas lp = new ListaPerguntas(quantidadePerguntas, nivel, usuario, p);
+
+        Intent intQuiz = new Intent(PrincipalActivity.this, JQuizActivity.class);
+        intQuiz.putExtra("listaPerguntas", lp);
+        startActivityForResult(intQuiz, RESULTADO_QUIZ);
+    }
+
+    //-- ListaPerguntasFragment
+    @Override
+    public void terminaVisualizacaoLista(ListaPerguntasFragment listaPerguntasFragment) {
+
+        atualizaVisibilidadeDoFrameLayout(fFragments, View.INVISIBLE);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.remove(listaPerguntasFragment);
+        ft.commit();
+    }
+    @Override
+    public List<Perguntas> pegaListaDePerguntas() {
+
+        return quizDB.buscarTodasPerguntas();
+    }
+
+    //-- ConfiguracoesFragment
+    @Override
+    public void verificaListaPerguntas() {
+
+        ListaPerguntasFragment fAtual = new ListaPerguntasFragment();
+
+        atualizaVisibilidadeDoFrameLayout(fFragments, View.VISIBLE);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frm_fragment, fAtual);
+        ft.commit();
+    }
+    @Override
+    public void criaNovaPergunta() {
+
+    }
+
+    //-- PerguntasFragment
+    @Override
+    public void verificaRespostaSelecionada(boolean respostaCerta) {}
+
+    @Override
+    public void terminaVisualizacaoPergunta(PerguntasFragment perguntasFragment) {
+
+        atualizaVisibilidadeDoFrameLayout(fFragments2, View.INVISIBLE);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.remove(perguntasFragment);
+        ft.commit();
+    }
+
+    //-- ResultadoFragment
+    @Override
+    public void fechaResultado(ResultadoFragment resultadoFragment) {
+
+        atualizaVisibilidadeDoFrameLayout(fFragments, View.INVISIBLE);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.remove(resultadoFragment);
+        ft.commit();
+    }
+
+    //-- ListaPerguntasAdapter
+    public void verificaPerguntaSelecionada(Perguntas pergunta) {
+
+        PerguntasFragment fAtual = new PerguntasFragment();
+
+        fAtual.setPergunta(pergunta);
+        fAtual.setApenasVisualiza(true);
+
+        atualizaVisibilidadeDoFrameLayout(fFragments2, View.VISIBLE);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frm_fragment2, fAtual);
+        ft.commit();
+    }
+
+    /**
+     * Métodos auxuliares
+     */
 
     protected void inicializaPreferencias() {
 
         //-- Pegando as informações de preferência salvas de execuções anteriores.
-
         preferenciasCompartilhadas = new PreferenciasCompartilhadas(getSharedPreferences(String.valueOf(R.string.shared_preference_file_key), Context.MODE_PRIVATE));
 
         nomeUsuario = preferenciasCompartilhadas.pegaPreferencia(getString(R.string.shared_preference_1), getString(R.string.nome_usuario_default));
@@ -115,9 +241,6 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
             public void onPageScrollStateChanged(int state) { }
         });
     }
-    /**
-     * Métodos para tratar os fragmentos
-     **/
     private List<Fragment> pegaListaFragments() {
 
         List<Fragment> lista = new ArrayList<Fragment>();
@@ -130,101 +253,15 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
         return lista;
     }
 
-    private void atualizaVisibilidadeDoFrameLayout(int visibilidade) {
+    private void inicializaFramesLayouts() {
 
-        if ( fFragments == null) {
-
-            fFragments = (FrameLayout) findViewById(R.id.frm_fragment);
-        }
-        fFragments.setVisibility(visibilidade);
+        fFragments = (FrameLayout) findViewById(R.id.frm_fragment);
+        fFragments2 = (FrameLayout) findViewById(R.id.frm_fragment2);
     }
 
-    private void atualizaVisibilidadeDoFrameLayout2(int visibilidade) {
+    private void atualizaVisibilidadeDoFrameLayout(FrameLayout fLayout, int visibilidade) {
 
-        if ( fFragments2 == null) {
-
-            fFragments2 = (FrameLayout) findViewById(R.id.frm_fragment2);
-        }
-        fFragments2.setVisibility(visibilidade);
-    }
-
-    public void visualizaImagemPergunta(ImageView iv, int imagem) {
-
-        if (iv != null) {
-            iv.setImageDrawable(getResources().getDrawable(imagem));
-        }
-    }
-
-    /**
-     *  Métodos relacionados aos controles dos fragments
-     * */
-
-    @Override
-    public void verificaListaPerguntas() {
-
-        ListaPerguntasFragment fAtual = new ListaPerguntasFragment();
-
-        atualizaVisibilidadeDoFrameLayout(View.VISIBLE);
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frm_fragment, fAtual);
-        ft.commit();
-    }
-
-    @Override
-    public void terminaVisualizacaoLista(ListaPerguntasFragment listaPerguntasFragment) {
-
-        atualizaVisibilidadeDoFrameLayout(View.INVISIBLE);
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.remove(listaPerguntasFragment);
-        ft.commit();
-    }
-
-    @Override
-    public List<Perguntas> pegaListaDePerguntas() {
-
-        return quizDB.buscarTodasPerguntas();
-    }
-
-    public void verificaPerguntaSelecionada(Perguntas pergunta) {
-
-        PerguntasFragment fAtual = new PerguntasFragment();
-
-        fAtual.setPergunta(pergunta);
-        fAtual.setApenasVisualiza(true);
-
-        atualizaVisibilidadeDoFrameLayout2(View.VISIBLE);
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frm_fragment2, fAtual);
-        ft.commit();
-    }
-
-    @Override
-    public void verificaRespostaSelecionada(boolean respostaCerta) {}
-
-    @Override
-    public void terminaVisualizacaoPergunta(PerguntasFragment perguntasFragment) {
-
-        atualizaVisibilidadeDoFrameLayout2(View.INVISIBLE);
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.remove(perguntasFragment);
-        ft.commit();
-    }
-
-    @Override
-    public void inicializaJQuiz(String usuario, String nivel) {
-
-        List<Perguntas> p = selecionaPerguntas(nivel);
-        int quantidadePerguntas = p.size();
-
-        ListaPerguntas lp = new ListaPerguntas(quantidadePerguntas, nivel, usuario, p);
-
-        Intent intQuiz = new Intent(PrincipalActivity.this, JQuizActivity.class);
-        intQuiz.putExtra("listaPerguntas", lp);
-        startActivity(intQuiz);
+        fLayout.setVisibility(visibilidade);
     }
 
     private List<Perguntas> selecionaPerguntas(String nivel) {
@@ -262,4 +299,6 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
 
         return l;
     }
+
+
 }

@@ -5,6 +5,7 @@
     <string name="txt_usuario">Usuário</string>
     <string name="txt_nivel">Nível</string>
     <string name="btn_iniciar">Iniciar</string>
+    <string name="btn_ok">Ok</string>
 
     <!-- Preferências -->
     <string name="shared_preference_file_key">JQUIZ_PREFERENCES</string>
@@ -27,8 +28,8 @@
     <string name="titulo_configuracao">Configurações</string>
     <string name="conteudo_configuracao">É possível verificar a lista de perguntas cadastradas no jogo e também acrescentar novas perguntas.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Títulos dos fragments-->
+    <string name="titulo_resultado">Resultado</string>
     <string name="titulo_lista_perguntas"> Lista de Perguntas</string>
     <string name="titulo_pergunta"> Pergunta</string>
 

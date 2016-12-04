@@ -25,10 +25,9 @@ public class ListaPerguntasFragment extends Fragment {
 
     public ListaPerguntasFragment() {}
 
-    public static ListaPerguntasFragment newInstance(String param1, String param2) {
+    public static ListaPerguntasFragment newInstance() {
         ListaPerguntasFragment fragment = new ListaPerguntasFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,7 +35,6 @@ public class ListaPerguntasFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

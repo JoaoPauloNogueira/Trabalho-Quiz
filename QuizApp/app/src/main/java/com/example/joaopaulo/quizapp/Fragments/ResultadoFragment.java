@@ -1,37 +1,41 @@
 package com.example.joaopaulo.quizapp.Fragments;
 
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.joaopaulo.quizapp.R;
 
-public class IniciarFragment extends Fragment {
+public class ResultadoFragment extends Fragment {
 
     private static final String ARG_NOME_USUARIO = "nomeUsuario";
     private static final String ARG_LEVEL_USUARIO = "levelUsuario";
+    private static final String ARG_RESPOSTAS_CERTAS = "respostasCertas";
+    private static final String ARG_ORIGEM = "origem";
 
     private String mNomeUsuario;
     private String mLevelUsuario;
+    private int mRespostasCertas;
+    private int mOrigem;
 
     private OnFragmentInteractionListener mListener;
 
-    public IniciarFragment() { }
+    public ResultadoFragment() {}
 
-    public static IniciarFragment newInstance(String nomeUsuario, String levelUsuario) {
-        IniciarFragment fragment = new IniciarFragment();
+    public static ResultadoFragment newInstance(String nomeUsuario, String levelUsuario, int respostasCertas, int origem) {
+        ResultadoFragment fragment = new ResultadoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_NOME_USUARIO, nomeUsuario);
         args.putString(ARG_LEVEL_USUARIO, levelUsuario);
+        args.putInt(ARG_RESPOSTAS_CERTAS, respostasCertas);
+        args.putInt(ARG_ORIGEM, origem);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,6 +46,8 @@ public class IniciarFragment extends Fragment {
         if (getArguments() != null) {
             mNomeUsuario = getArguments().getString(ARG_NOME_USUARIO);
             mLevelUsuario = getArguments().getString(ARG_LEVEL_USUARIO);
+            mRespostasCertas = getArguments().getInt(ARG_RESPOSTAS_CERTAS);
+            mOrigem = getArguments().getInt(ARG_ORIGEM);
         }
     }
 
@@ -49,48 +55,29 @@ public class IniciarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_iniciar, container, false);
+        View view = inflater.inflate(R.layout.fragment_resultado, container, false);
 
-        Spinner opcoesNivel = (Spinner) v.findViewById(R.id.spn_nivel);
+        TextView tv = (TextView) view.findViewById(R.id.txt_resultado);
 
-        ArrayAdapter<CharSequence> opcoesAdapter = ArrayAdapter.createFromResource(v.getContext(),
-                R.array.opcoes_level, android.R.layout.simple_spinner_item);
-        opcoesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        opcoesNivel.setAdapter(opcoesAdapter);
+        tv.setText("Nível: " + mLevelUsuario + "\r\n" +
+                "Jogador(a) " + mNomeUsuario + "\r\n" +
+                "Respostas certas: " + mRespostasCertas);
 
-        final EditText et = (EditText) v.findViewById(R.id.edt_nome);
-        et.setText(mNomeUsuario);
+        Button bOk = (Button) view.findViewById(R.id.btn_ok);
 
-        final Spinner sp = (Spinner) v.findViewById(R.id.spn_nivel);
-        sp.setSelection(opcoesAdapter.getPosition(mLevelUsuario));
-
-        Button bi = (Button) v.findViewById(R.id.btn_iniciar);
-
-        bi.setOnClickListener(new View.OnClickListener() {
-
+        bOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String nomeUsuario = et.getText().toString();
-                String levelUsuario = sp.getSelectedItem().toString();
-
-                if (nomeUsuario == "" || nomeUsuario.isEmpty()) {
-
-                    Toast.makeText(getActivity(), "O nome do usuário deve ser digitado para poder começar o J Quiz.", Toast.LENGTH_LONG).show();
-
-                } else {
-
-                    iniciarQuiz(nomeUsuario, levelUsuario);
-                }
+                finalizaOQuiz();
             }
         });
 
-        return v;
+        return view;
     }
 
-    public void iniciarQuiz(String usuario, String nivel) {
+    public void finalizaOQuiz() {
         if (mListener != null) {
-            mListener.inicializaJQuiz(usuario, nivel);
+            mListener.fechaResultado(this);
         }
     }
 
@@ -113,6 +100,6 @@ public class IniciarFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
 
-        void inicializaJQuiz(String usuario, String nivel);
+        void fechaResultado( ResultadoFragment resultadoFragment);
     }
 }

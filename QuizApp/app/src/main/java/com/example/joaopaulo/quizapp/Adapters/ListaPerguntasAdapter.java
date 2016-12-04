@@ -56,13 +56,15 @@ public class ListaPerguntasAdapter extends RecyclerView.Adapter<ListaPerguntasAd
         ImageView imageView;
         TextView textView;
         Perguntas pergunta;
-        private final PrincipalActivity inicialActivity;
+        View view;
+        private PrincipalActivity inicialActivity;
 
         public ItemViewHolder(final PrincipalActivity inicialActivity, View view) {
 
             super(view);
 
             this.inicialActivity = inicialActivity;
+            this.view = view;
             setImageView((ImageView) view.findViewById(R.id.img_cardview));
             setTextView((TextView) view.findViewById(R.id.txt_cardview));
 
@@ -84,9 +86,6 @@ public class ListaPerguntasAdapter extends RecyclerView.Adapter<ListaPerguntasAd
         public void setImageView(ImageView imageView) {
             this.imageView = imageView;
         }
-        public ImageView getImageView() {
-            return this.imageView;
-        }
         public void setTextView(TextView textView) {
             this.textView = textView;
         }
@@ -98,7 +97,7 @@ public class ListaPerguntasAdapter extends RecyclerView.Adapter<ListaPerguntasAd
         }
         private void atualizaImagemPergunta(Perguntas pergunta) {
 
-            inicialActivity.visualizaImagemPergunta(getImageView(), pergunta.getImagem());
+            imageView.setImageDrawable(view.getResources().getDrawable(pergunta.getImagem()));
         }
         private void atualizaTextoPergunta(Perguntas pergunta) {
 
