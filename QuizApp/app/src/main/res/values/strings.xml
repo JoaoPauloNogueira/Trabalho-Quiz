@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">J Quiz</string>
+
+    <!-- Constantes -->
+    <string name="txt_usuario">Usuário</string>
+    <string name="txt_nivel">Nível</string>
+    <string name="btn_iniciar">Iniciar</string>
+
+    <!-- Preferências -->
+    <string name="shared_preference_file_key">JQUIZ_PREFERENCES</string>
+    <string name="shared_preference_1">NOME_USUARIO</string>
+    <string name="shared_preference_2">LEVEL_USUARIO</string>
+    <string name="nome_usuario_default">Nome</string>
+    <string name="level_default">@string/level_2</string>
+
+    <!-- Informações nível-->
+    <string name="level_1">Fácil</string>
+    <string name="level_2">Normal</string>
+    <string name="level_3">Difícil</string>
+    <string-array name="opcoes_level">
+        <item>@string/level_1</item>
+        <item>@string/level_2</item>
+        <item>@string/level_3</item>
+    </string-array>
+
+    <!-- Configurações do App -->
+    <string name="titulo_configuracao">Configurações</string>
+    <string name="conteudo_configuracao">É possível verificar a lista de perguntas cadastradas no jogo e também acrescentar novas perguntas.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titulo_lista_perguntas"> Lista de Perguntas</string>
+    <string name="titulo_pergunta"> Pergunta</string>
+
+</resources>
