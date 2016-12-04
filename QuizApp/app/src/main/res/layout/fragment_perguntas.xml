@@ -1,0 +1,102 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/quiz_background_bord"
+    tools:context="com.example.joaopaulo.quizapp.Fragments.PerguntasFragment">
+
+    <android.support.constraint.Guideline
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_10"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="55dp"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintGuide_percent="0.10763209" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_50_2"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="256dp"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintGuide_percent="0.50097847" />
+
+    <TextView
+        android:text="@string/titulo_pergunta"
+        android:background="@color/cardview_dark_background"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="28dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:id="@+id/txt_titulo_pergunta"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_10"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:layout_height="48dp"
+        android:background="@android:drawable/btn_dialog"
+        android:id="@+id/btn_fechar_pergunta"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_titulo_pergunta"
+        app:layout_constraintRight_toRightOf="@+id/txt_titulo_pergunta"
+        app:layout_constraintTop_toTopOf="@+id/txt_titulo_pergunta"
+        android:layout_width="48dp" />
+
+    <ImageView
+        android:layout_width="329dp"
+        android:layout_height="178dp"
+        app:srcCompat="@drawable/brasil"
+        android:id="@+id/img_pergunta"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_50_2"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:layout_width="326dp"
+        android:layout_height="194dp"
+        android:id="@+id/rdg_pergunta"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_50_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="15dp"
+            android:id="@+id/txt_pergunta"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/rbt_resposta1"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/rbt_resposta2"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/rbt_resposta3"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/rbt_resposta4" />
+
+    </RadioGroup>
+
+</android.support.constraint.ConstraintLayout>

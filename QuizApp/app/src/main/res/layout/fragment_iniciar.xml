@@ -1,0 +1,149 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="321dp"
+    android:layout_height="150dp"
+    android:layout_marginStart="16dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintRight_toRightOf="parent"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp">
+
+    <EditText
+        android:layout_width="286dp"
+        android:layout_height="43dp"
+        android:inputType="textPersonName"
+        android:text="@string/nome_usuario_default"
+        android:ems="10"
+        android:id="@+id/edt_nome"
+        android:background="@android:drawable/edit_text"
+        app:layout_constraintLeft_toLeftOf="@+id/gdl_v_04"
+        app:layout_constraintRight_toLeftOf="@+id/gdl_v_96"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_50"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_16" />
+
+    <Spinner
+        android:layout_height="36dp"
+        android:id="@+id/spn_nivel"
+        android:layout_width="169dp"
+        android:background="@android:drawable/spinner_dropdown_background"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/gdl_v_04"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_96"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_62"
+        app:layout_constraintRight_toLeftOf="@+id/gdl_v_60"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <Button
+        android:text="@string/btn_iniciar"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_iniciar"
+        app:layout_constraintRight_toLeftOf="@+id/gdl_v_96"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_96"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_50"
+        app:layout_constraintLeft_toLeftOf="@+id/gdl_v_60"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:backgroundTint="@android:color/holo_blue_light" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_50"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="76dp"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintGuide_percent="0.50666666" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_v_60"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5981308"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="192dp" />
+
+    <TextView
+        android:text="@string/txt_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_usuario"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_16"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_46"
+        app:layout_constraintLeft_toLeftOf="@+id/gdl_v_04" />
+
+    <TextView
+        android:text="@string/txt_nivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_nivel"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_50"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_62"
+        app:layout_constraintLeft_toLeftOf="@+id/gdl_v_04" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_v_04"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="14dp"
+        app:layout_constraintGuide_percent="0.043613706" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_v_96"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="311dp"
+        app:layout_constraintGuide_percent="0.96884733" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_46"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.046666667"
+        tools:layout_editor_absoluteY="7dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_96"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="144dp"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_16"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="25dp"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintGuide_percent="0.16666667" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_h_62"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="93dp"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintGuide_percent="0.62" />
+
+
+</android.support.constraint.ConstraintLayout>
