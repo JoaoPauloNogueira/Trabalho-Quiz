@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="imagem">
+        <item>@drawable/img_1</item>
+        <item>@drawable/img_2</item>
+        <item>@drawable/img_3</item>
+        <item>@drawable/img_4</item>
+        <item>@drawable/img_5</item>
+        <item>@drawable/img_6</item>
+        <item>@drawable/img_7</item>
+        <item>@drawable/img_8</item>
+        <item>@drawable/img_9</item>
+        <item>@drawable/img_10</item>
+    </array>
+    <array name="pergunta">
+        <item>Existem quantos filmes do Batman?</item>
+        <item>Existem quantos estados na região Norte?</item>
+        <item>Qual a origem do chocolate?</item>
+        <item>Quem foi o maior conquistador da Terra?</item>
+        <item>Qual o emblema da casa Mormont?</item>
+        <item>Quem inventou o macarrão?</item>
+        <item>Qual o nome da moeda chinesa?</item>
+        <item>Qual foi o filme a ganhar o primeiro Oscar de animação?</item>
+        <item>Quem foi o primeiro programador?</item>
+        <item>Qual o maior país da Terra?</item>
+    </array>
+    <array name="resposta1">
+        <item>7</item>
+        <item>6</item>
+        <item>África</item>
+        <item>Alexandre, o grande</item>
+        <item>Águia</item>
+        <item>Árabes</item>
+        <item>Dolár chinês</item>
+        <item>Jimmy Neutron</item>
+        <item>Ada Lovelace</item>
+        <item>Canadá</item>
+    </array>
+    <array name="resposta2">
+        <item>8</item>
+        <item>7</item>
+        <item>Ásia</item>
+        <item>Genghis Khan</item>
+        <item>Corvo</item>
+        <item>Chineses</item>
+        <item>Euro chinês</item>
+        <item>Monstros S.A.</item>
+        <item>Alan Turing</item>
+        <item>China</item>
+    </array>
+    <array name="resposta3">
+        <item>9</item>
+        <item>8</item>
+        <item>América</item>
+        <item>Hittler</item>
+        <item>Ovelha</item>
+        <item>Italianos</item>
+        <item>Yene</item>
+        <item>Shrek</item>
+        <item>Blaise Pascal</item>
+        <item>E.U.A.</item>
+    </array>
+    <array name="resposta4">
+        <item>10</item>
+        <item>9</item>
+        <item>Europa</item>
+        <item>Napoleão</item>
+        <item>Urso</item>
+        <item>Portugueses</item>
+        <item>Yuan</item>
+        <item>Toy Story</item>
+        <item>Steve Jobs</item>
+        <item>Rússia</item>
+    </array>
+    <array name="respostaCerta">
+        <item>8</item>
+        <item>7</item>
+        <item>América</item>
+        <item>Genghis Khan</item>
+        <item>Urso</item>
+        <item>Chineses</item>
+        <item>Yuan</item>
+        <item>Shrek</item>
+        <item>Ada Lovelace</item>
+        <item>Rússia</item>
+    </array>
+</resources>
