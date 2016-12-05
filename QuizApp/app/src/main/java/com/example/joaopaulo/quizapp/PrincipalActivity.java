@@ -64,22 +64,37 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RESULTADO_QUIZ) {
+        if (resultCode == RESULT_OK) {
 
-            Bundle b = data.getExtras();
+            if (requestCode == RESULTADO_QUIZ) {
 
-            ResultadoFragment fAtual = ResultadoFragment.newInstance(b.getString("nomeDoUsuario"),
-                    b.getString("nivelDoUsuario"), b.getInt("qtdRespostasCertas"));
+                Bundle b = data.getExtras();
 
-            atualizaVisibilidadeDoFrameLayout(fFragments, View.VISIBLE);
+                ResultadoFragment fAtual = ResultadoFragment.newInstance(b.getString("nomeDoUsuario"),
+                        b.getString("nivelDoUsuario"), b.getInt("qtdRespostasCertas"), ResultadoFragment.ORIGEM_QUIZ);
 
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frm_fragment, fAtual);
-            ft.commit();
+                atualizaVisibilidadeDoFrameLayout(fFragments, View.VISIBLE);
 
-        } else if (requestCode == NOVA_PERGUNTA) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.frm_fragment, fAtual);
+                ft.commit();
 
+            } else if (requestCode == NOVA_PERGUNTA) {
 
+                Bundle b = data.getExtras();
+                Perguntas pergunta = (Perguntas) b.get("novaPergunta");
+
+                quizDB.adicionarPergunta(pergunta);
+
+                ResultadoFragment fAtual = ResultadoFragment.newInstance(nomeUsuario,
+                        levelUsuario, 0, ResultadoFragment.ORIGEM_CADASTRO_PERGUNTA);
+
+                atualizaVisibilidadeDoFrameLayout(fFragments, View.VISIBLE);
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.frm_fragment, fAtual);
+                ft.commit();
+            }
         }
     }
 
@@ -91,8 +106,8 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
     @Override
     public void inicializaJQuiz(String usuario, String nivel) {
 
-        preferenciasCompartilhadas.atualizaPreferencia(getString(R.string.shared_preference_1), nomeUsuario);
-        preferenciasCompartilhadas.atualizaPreferencia(getString(R.string.shared_preference_2), levelUsuario);
+        preferenciasCompartilhadas.atualizaPreferencia(getString(R.string.shared_preference_1), usuario);
+        preferenciasCompartilhadas.atualizaPreferencia(getString(R.string.shared_preference_2), nivel);
 
         List<Perguntas> p = selecionaPerguntas(nivel);
         int quantidadePerguntas = p.size();
@@ -135,6 +150,8 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
     @Override
     public void criaNovaPergunta() {
 
+        Intent intQuiz = new Intent(PrincipalActivity.this, CadastrarPerguntaActivity.class);
+        startActivityForResult(intQuiz, NOVA_PERGUNTA);
     }
 
     //-- PerguntasFragment
@@ -206,7 +223,7 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
         Perguntas p;
         boolean verificaPerguntasPadrao = true;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < imagens.length(); i++) {
 
             String[] respostas = {respostas1.getString(i),respostas2.getString(i), respostas3.getString(i), respostas4.getString(i)};
             p = new Perguntas(imagens.getResourceId(i, 0), perguntas.getString(i), respostas, respostasCerta.getString(i));
@@ -269,7 +286,7 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
         List<Perguntas> lp = quizDB.buscarTodasPerguntas();
 
         int totalPerguntas = lp.size();
-        int perguntasSelecionadas[] = new int[15];
+        int[] perguntasSelecionadas = new int[15];
 
         int maxPerguntas = 0;
         int i = new Random().nextInt(totalPerguntas);
@@ -291,6 +308,7 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
 
                 i = new Random().nextInt(totalPerguntas);
             }
+
             perguntasSelecionadas[j] = i;
             l.add(lp.get(i));
             j++;
@@ -299,6 +317,4 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
 
         return l;
     }
-
-
 }

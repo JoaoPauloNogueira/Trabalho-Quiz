@@ -1,7 +1,6 @@
 package com.example.joaopaulo.quizapp.Fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +12,9 @@ import android.widget.TextView;
 import com.example.joaopaulo.quizapp.R;
 
 public class ResultadoFragment extends Fragment {
+
+    public static final int ORIGEM_QUIZ = 1;
+    public static final int ORIGEM_CADASTRO_PERGUNTA = 2;
 
     private static final String ARG_NOME_USUARIO = "nomeUsuario";
     private static final String ARG_LEVEL_USUARIO = "levelUsuario";
@@ -59,9 +61,15 @@ public class ResultadoFragment extends Fragment {
 
         TextView tv = (TextView) view.findViewById(R.id.txt_resultado);
 
-        tv.setText("Nível: " + mLevelUsuario + "\r\n" +
-                "Jogador(a) " + mNomeUsuario + "\r\n" +
-                "Respostas certas: " + mRespostasCertas);
+        if (mOrigem == ORIGEM_QUIZ) {
+
+            tv.setText("Nível: " + mLevelUsuario + "\r\n" +
+                    "Jogador(a): " + mNomeUsuario + "\r\n" +
+                    "Respostas certas: " + mRespostasCertas);
+        } else {
+
+            tv.setText(R.string.txt_cadastro_pergunta);
+        }
 
         Button bOk = (Button) view.findViewById(R.id.btn_ok);
 

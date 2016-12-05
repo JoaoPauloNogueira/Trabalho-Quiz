@@ -11,6 +11,21 @@
         <item>@drawable/img_8</item>
         <item>@drawable/img_9</item>
         <item>@drawable/img_10</item>
+        <item>@drawable/img_11</item>
+        <item>@drawable/img_12</item>
+        <item>@drawable/img_13</item>
+        <item>@drawable/img_14</item>
+        <item>@drawable/img_15</item>
+        <item>@drawable/img_16</item>
+        <item>@drawable/img_17</item>
+        <item>@drawable/img_18</item>
+        <item>@drawable/img_19</item>
+        <item>@drawable/img_20</item>
+        <item>@drawable/img_21</item>
+        <item>@drawable/img_22</item>
+        <item>@drawable/img_23</item>
+        <item>@drawable/img_24</item>
+        <item>@drawable/img_25</item>
     </array>
     <array name="pergunta">
         <item>Existem quantos filmes do Batman?</item>
@@ -23,6 +38,21 @@
         <item>Qual foi o filme a ganhar o primeiro Oscar de animação?</item>
         <item>Quem foi o primeiro programador?</item>
         <item>Qual o maior país da Terra?</item>
+        <item>Em que ano nasceu J.R.R.Tolkien?</item>
+        <item>Qual o nome do deus grego do sono?</item>
+        <item>Na Bíblia, quem subiu uma escada até os céus?</item>
+        <item>Quem foi o primeiro presidente do Brasil?</item>
+        <item>Qual a raiz quadrada de 529?</item>
+        <item>Quem é considerado o pai da genética?</item>
+        <item>Em que ano foi inventado o cinema pelos irmãos Lumière?</item>
+        <item>Quem é considerado o pai da física clássica?</item>
+        <item>Existem quantos planetas no sistema solar?</item>
+        <item>Qual a maior ilha fluvial do mundo?</item>
+        <item>Silvio Santos nasceu em que ano?</item>
+        <item>Qual o nome do herói das Ilíadas?</item>
+        <item>Qual país não fazia parte do Eixo durante a 2ª guerra mundial?</item>
+        <item>Qual foi o primeiro campeão da copa do mundo de futebol?</item>
+        <item>Quem inventou o raio da morte?</item>
     </array>
     <array name="resposta1">
         <item>7</item>
@@ -35,6 +65,21 @@
         <item>Jimmy Neutron</item>
         <item>Ada Lovelace</item>
         <item>Canadá</item>
+        <item>1892</item>
+        <item>Ares</item>
+        <item>Abraão</item>
+        <item>Floriano Peixoto</item>
+        <item>21</item>
+        <item>Albert Sabin</item>
+        <item>1895</item>
+        <item>Blaise Pascal</item>
+        <item>7</item>
+        <item>Ilha do Bananal</item>
+        <item>1928</item>
+        <item>Aquiles</item>
+        <item>Alemanha</item>
+        <item>Alemanha</item>
+        <item>Alessandro Volta</item>
     </array>
     <array name="resposta2">
         <item>8</item>
@@ -47,6 +92,21 @@
         <item>Monstros S.A.</item>
         <item>Alan Turing</item>
         <item>China</item>
+        <item>1893</item>
+        <item>Hefesto</item>
+        <item>Israel</item>
+        <item>Getúlio Vargas</item>
+        <item>22</item>
+        <item>Gregor Mendel</item>
+        <item>1897</item>
+        <item>Gottfried Leibniz</item>
+        <item>8</item>
+        <item>Ilha de Marajó</item>
+        <item>1929</item>
+        <item>Menelau</item>
+        <item>Itália</item>
+        <item>Brasil</item>
+        <item>Nikola Tesla</item>
     </array>
     <array name="resposta3">
         <item>9</item>
@@ -59,6 +119,21 @@
         <item>Shrek</item>
         <item>Blaise Pascal</item>
         <item>E.U.A.</item>
+        <item>1894</item>
+        <item>Morfeu</item>
+        <item>Jaco</item>
+        <item>Juscelino Kubitschek</item>
+        <item>23</item>
+        <item>Isaac Newton</item>
+        <item>1899</item>
+        <item>Isaac Newton</item>
+        <item>9</item>
+        <item>Japão</item>
+        <item>1930</item>
+        <item>Paris</item>
+        <item>Japão</item>
+        <item>Itália</item>
+        <item>Michael Faraday</item>
     </array>
     <array name="resposta4">
         <item>10</item>
@@ -71,6 +146,21 @@
         <item>Toy Story</item>
         <item>Steve Jobs</item>
         <item>Rússia</item>
+        <item>1895</item>
+        <item>Zeus</item>
+        <item>Paulo</item>
+        <item>Marechal Deodoro da Fonseca</item>
+        <item>24</item>
+        <item>Louis Pasteur</item>
+        <item>1901</item>
+        <item>Pierre de Fermat</item>
+        <item>10</item>
+        <item>Madagascar</item>
+        <item>1931</item>
+        <item>Ulisses</item>
+        <item>Suíça</item>
+        <item>Uruguai</item>
+        <item>Thomas Edison</item>
     </array>
     <array name="respostaCerta">
         <item>8</item>
@@ -83,5 +173,20 @@
         <item>Shrek</item>
         <item>Ada Lovelace</item>
         <item>Rússia</item>
+        <item>1892</item>
+        <item>Morfeu</item>
+        <item>Jaco</item>
+        <item>Marechal Deodoro da Fonseca</item>
+        <item>23</item>
+        <item>Gregor Mendel</item>
+        <item>1895</item>
+        <item>Isaac Newton</item>
+        <item>8</item>
+        <item>Ilha do Bananal</item>
+        <item>1930</item>
+        <item>Ulisses</item>
+        <item>Suíça</item>
+        <item>Uruguai</item>
+        <item>Nikola Tesla</item>
     </array>
 </resources>

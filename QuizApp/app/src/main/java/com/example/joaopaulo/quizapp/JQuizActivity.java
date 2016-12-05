@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.joaopaulo.quizapp.Data.ListaPerguntas;
@@ -73,13 +72,6 @@ public class JQuizActivity extends AppCompatActivity implements PerguntasFragmen
         intent.putExtras(b);
         setResult(RESULT_OK, intent);
         finish();
-    }
-
-    public void visualizaImagemPergunta(ImageView iv, int imagem) {
-
-        if (iv != null) {
-            iv.setImageDrawable(getResources().getDrawable(imagem));
-        }
     }
 
     @Override

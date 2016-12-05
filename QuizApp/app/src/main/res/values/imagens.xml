@@ -11,4 +11,20 @@
     <drawable name="img_8">@drawable/oscar_award</drawable>
     <drawable name="img_9">@drawable/programacao</drawable>
     <drawable name="img_10">@drawable/terra_1</drawable>
+    <drawable name="img_11">@drawable/lordoftherings</drawable>
+    <drawable name="img_12">@drawable/mitologia</drawable>
+    <drawable name="img_13">@drawable/jaco</drawable>
+    <drawable name="img_14">@drawable/republica</drawable>
+    <drawable name="img_15">@drawable/matematica</drawable>
+    <drawable name="img_16">@drawable/genetica</drawable>
+    <drawable name="img_17">@drawable/cinema</drawable>
+    <drawable name="img_18">@drawable/fisica</drawable>
+    <drawable name="img_19">@drawable/sistemasolar</drawable>
+    <drawable name="img_20">@drawable/ilha</drawable>
+    <drawable name="img_21">@drawable/silviosantos</drawable>
+    <drawable name="img_22">@drawable/iliada</drawable>
+    <drawable name="img_23">@drawable/guerra</drawable>
+    <drawable name="img_24">@drawable/copadomundo</drawable>
+    <drawable name="img_25">@drawable/raiodamorte</drawable>
+
 </resources>
