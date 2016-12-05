@@ -23,13 +23,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_50_3"
         android:layout_marginBottom="8dp" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline"
+        android:id="@+id/gdl_h_50_3"
         android:orientation="horizontal"
         tools:layout_editor_absoluteY="257dp"
         tools:layout_editor_absoluteX="0dp"
@@ -38,13 +38,14 @@
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline3"
+        android:id="@+id/gdl_h_90_2"
         android:orientation="horizontal"
         tools:layout_editor_absoluteY="465dp"
         tools:layout_editor_absoluteX="0dp"
         app:layout_constraintGuide_percent="0.9099804"/>
 
     <android.support.v4.view.ViewPager
+        android:background="@mipmap/quiz_background_bord"
         android:layout_width="348dp"
         android:layout_height="180dp"
         android:layout_marginEnd="16dp"
@@ -53,28 +54,13 @@
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_50_3"
         android:layout_marginTop="8dp"
         android:id="@+id/vp_selecao"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_h_90_2"
         android:layout_marginBottom="8dp">
 
     </android.support.v4.view.ViewPager>
-
-    <SeekBar
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:max="1"
-        android:progress="0"
-        android:id="@+id/seekBar"
-        app:layout_constraintRight_toRightOf="@+id/vp_selecao"
-        android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="@+id/vp_selecao"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        android:indeterminateDrawable="?attr/actionBarDivider"
-        android:progressDrawable="?android:attr/selectableItemBackground"
-        android:thumb="@android:drawable/radiobutton_off_background" />
 
     <FrameLayout
         android:layout_width="360dp"
@@ -82,10 +68,38 @@
         android:id="@+id/frm_fragment"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="invisible"/>
+
+    <RadioGroup
+        android:id="@+id/rg_opcoes_menu"
+        android:layout_width="165dp"
+        android:layout_height="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/gdl_h_90_2"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:checkedButton="@+id/rbt_menu_iniciar"
+        android:layoutMode="opticalBounds"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="@+id/gdl_h_90_2">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbt_menu_iniciar"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbt_menu_configuracoes"
+            android:layout_weight="1"
+            android:ellipsize="none"
+            android:layoutDirection="rtl" />
+    </RadioGroup>
 
     <FrameLayout
         android:layout_width="360dp"
@@ -93,8 +107,9 @@
         android:id="@+id/frm_fragment2"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="invisible"/>
+        android:visibility="invisible">
+
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

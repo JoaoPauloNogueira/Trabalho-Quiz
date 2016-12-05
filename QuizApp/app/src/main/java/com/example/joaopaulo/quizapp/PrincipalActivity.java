@@ -11,8 +11,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.example.joaopaulo.quizapp.Adapters.ViewPagerSelecaoAdapter;
 import com.example.joaopaulo.quizapp.Data.ListaPerguntas;
@@ -241,6 +241,8 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
 
     private void inicializaViewPager() {
 
+
+        final RadioGroup rgMenu = (RadioGroup) findViewById(R.id.rg_opcoes_menu);
         final ViewPager vpSelecao = (ViewPager) findViewById(R.id.vp_selecao);
         ViewPagerSelecaoAdapter vpaSelecao = new ViewPagerSelecaoAdapter(pegaListaFragments(), getSupportFragmentManager());
 
@@ -251,11 +253,38 @@ public class PrincipalActivity extends AppCompatActivity implements IniciarFragm
 
             @Override
             public void onPageSelected(int position) {
+
                 vpSelecao.setCurrentItem(position);
+
+                if (position == 0) {
+
+                    ((RadioButton)rgMenu.findViewById(R.id.rbt_menu_iniciar)).setChecked(true);
+
+                } else if ( position == 1) {
+
+                    ((RadioButton)rgMenu.findViewById(R.id.rbt_menu_configuracoes)).setChecked(true);
+                }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) { }
+        });
+
+        rgMenu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i != -1) {
+
+                    if (i == R.id.rbt_menu_iniciar) {
+
+                        vpSelecao.setCurrentItem(0);
+
+                    } else if (i == R.id.rbt_menu_configuracoes) {
+
+                        vpSelecao.setCurrentItem(1);
+                    }
+                }
+            }
         });
     }
     private List<Fragment> pegaListaFragments() {
